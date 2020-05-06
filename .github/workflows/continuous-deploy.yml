@@ -6,20 +6,11 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v2
-
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
+      - uses: actions/checkout@v2
+      - name: Specific python version and secret keys
+        uses: actions/setup-python@v1
         with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-
-      - name: Sample secret key
-        with:
+          python-version: '3.8'
+          architecture: 'x64'
           super_secret: ${{ secrets.SAMPLE_SECRET_KEY }}
-        run: |
-          echo "Super secret should be redacted $super_secret"
+        run: echo "Super secret should be redacted $super_secret"
