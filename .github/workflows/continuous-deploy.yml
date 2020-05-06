@@ -7,10 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Specific python version and secret keys
         uses: actions/setup-python@v1
         with:
           python-version: '3.8'
           architecture: 'x64'
           super_secret: ${{ secrets.SAMPLE_SECRET_KEY }}
+
+      - name: Can you share a secret?
         run: echo "Super secret should be redacted $super_secret"
+
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
