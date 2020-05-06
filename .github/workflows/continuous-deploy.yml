@@ -23,12 +23,6 @@ jobs:
           architecture: 'x64'
           secret: ${{ secrets.SAMPLE_SECRET_KEY }}
 
-      - name: Can you share a secret?
-        run: echo "Super secret should be redacted $secret"
-
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
-
       - name: Install Python dependencies
         env:
           env_secret: ${{ secrets.SAMPLE_SECRET_KEY }}
